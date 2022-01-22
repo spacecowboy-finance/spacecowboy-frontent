@@ -42,7 +42,7 @@ export default function PoolOverview({
   const formattedDecimals = poolType === PoolTypes.USD ? 2 : 4
   const shouldMigrate = !!onClickMigrate
   const formattedData = {
-    name: poolData.name,
+    name: "TEST",
     reserve: poolData.reserve
       ? formatBNToShortString(poolData.reserve, 18)
       : "-",

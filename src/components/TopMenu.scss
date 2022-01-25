@@ -2,10 +2,12 @@
 @import "../styles/viewports";
 
 .top {
-  background-color: var(--background);
+  min-height: 100vh;
+  background: var(--background-main);
   height: 88px;
   padding-left: 56px;
   padding-right: 56px;
+  padding-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +43,7 @@ ul.nav {
       margin-right: 0;
     }
     a {
-      color: var(--text);
+      color: var(--text-title);
       text-decoration: none;
       font-style: normal;
       font-weight: $normal;
@@ -69,9 +71,9 @@ ul.nav {
 }
 .walletStatus {
   .connection {
-    // padding: 8px;
-    // border: 1px solid;
-    // border-radius: 10px;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 10px;
     &.success .indicator {
       filter: invert(1);
     }
@@ -101,4 +103,12 @@ svg.hamburger {
   circle {
     fill: var(--primary-foreground);
   }
+}
+
+.logo {
+  background-image: url(../assets/icons/logo_24.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 64px;
+  width: auto;
 }

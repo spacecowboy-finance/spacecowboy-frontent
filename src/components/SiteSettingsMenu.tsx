@@ -79,6 +79,39 @@ export const SUPPORTED_NETWORKS: {
     rpcUrls: ["https://arb1.arbitrum.io/rpc"],
     blockExplorerUrls: ["https://mainnet-arb-explorer.netlify.app"],
   },
+  [ChainId.ARBITRUM_TESTNET]: {
+    chainId: "0x66EEB",
+    chainName: "Arbitrum Test",
+    nativeCurrency: {
+      name: "Ethereum",
+      symbol: "ARETH",
+      decimals: 18,
+    },
+    rpcUrls: ["https://rinkeby.arbitrum.io/rpc"],
+    blockExplorerUrls: ["https://rinkeby-explorer.arbitrum.io"],
+  },
+  [ChainId.HARMONY_MAINNET]: {
+    chainId: "0x63564C40",
+    chainName: "Harmony",
+    nativeCurrency: {
+      name: "One",
+      symbol: "ONE",
+      decimals: 18,
+    },
+    rpcUrls: ["https://harmony-0-rpc.gateway.pokt.network"],
+    blockExplorerUrls: ["https://explorer.harmony.one"],
+  },
+  [ChainId.HARMONY_TESTNET]: {
+    chainId: "0x6357D2E0",
+    chainName: "Harmony Test",
+    nativeCurrency: {
+      name: "One",
+      symbol: "ONE",
+      decimals: 18,
+    },
+    rpcUrls: ["https://api.s0.b.hmny.io"],
+    blockExplorerUrls: ["https://explorer.testnet.harmony.one"],
+  },
 }
 function NetworkSection(): ReactElement {
   const { t } = useTranslation()
@@ -86,7 +119,9 @@ function NetworkSection(): ReactElement {
   const [isNetworkVisible, setIsNetworkVisible] = useState(false)
   const networks = [
     ChainId.MAINNET,
-    ...(IS_L2_SUPPORTED ? [ChainId.ARBITRUM] : []),
+    ChainId.HARMONY_MAINNET,
+    ...(IS_L2_SUPPORTED ? [ChainId.ARBITRUM_TESTNET] : []),
+    ChainId.HARMONY_TESTNET,
   ]
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import { classNames } from "../../functions/styling"

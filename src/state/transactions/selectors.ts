@@ -7,7 +7,7 @@ import {
   selectWeb3Context,
   Web3ReactContext,
 } from "../../state/global/web3ContextSlice"
-import { TransactionState } from "app/state/transactions/reducer"
+import { TransactionState } from "./reducer"
 
 type TransactionStatus = "PENDING" | "SUCCESS" | "CANCELLED" | "FAILED"
 type TxHash = string

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { combineReducers } from "@reduxjs/toolkit"
 
 import onsen from "../features/onsen/onsenSlice"

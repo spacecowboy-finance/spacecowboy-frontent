@@ -74,6 +74,8 @@ export enum ChainId {
   // KOVAN = 42,
   HARDHAT = 31337,
   ARBITRUM = 42161,
+  HARMONY_MAINNET = 1666600000,
+  HARMONY_TESTNET = 1666700000,
 }
 export enum PoolTypes {
   BTC,

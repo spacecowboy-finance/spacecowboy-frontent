@@ -6,7 +6,6 @@ import logo from "../assets/icons/logo.svg"
 import styles from "./SiteSettingsMenu.module.scss"
 import { useActiveWeb3React } from "../hooks"
 import useAddTokenToMetamask from "../hooks/useAddTokenToMetamask"
-import { useThemeSettings } from "../providers/ThemeSettingsProvider"
 import { useTranslation } from "react-i18next"
 
 export default function SiteSettingsMenu(): ReactElement {
@@ -16,7 +15,7 @@ export default function SiteSettingsMenu(): ReactElement {
       {IS_L2_SUPPORTED && <Divider />}
       <LanguageSection key="language" />
       <Divider />
-      <ThemeSection key="theme" />
+      {/* <ThemeSection key="theme" /> */}
       {IS_SDL_LIVE && <Divider />}
       {IS_SDL_LIVE && <AddTokenSection key="token" />}
     </div>
@@ -199,24 +198,29 @@ function LanguageSection(): ReactElement {
   )
 }
 
-function ThemeSection(): ReactElement {
-  const { t } = useTranslation()
-  const { themeMode, onChangeMode } = useThemeSettings()
+// Leaving this code here for future reference in case a light theme is added back in the future
+// Note: Be sure to add the import statement below to the top of the file
 
-  const handleChangeMode = () => {
-    onChangeMode(themeMode === "dark" ? "light" : "dark")
-  }
+//import { useThemeSettings } from "../providers/ThemeSettingsProvider"
 
-  return (
-    <div className={styles.section}>
-      <div
-        data-testid="themeMenuOption"
-        className={styles.sectionTitle}
-        onClick={handleChangeMode}
-      >
-        <span>{t("theme")}</span>{" "}
-        <span>{themeMode === "dark" ? "☾" : "☀"}</span>
-      </div>
-    </div>
-  )
-}
+// function ThemeSection(): ReactElement {
+//   const { t } = useTranslation()
+//   const { themeMode, onChangeMode } = useThemeSettings()
+
+//   const handleChangeMode = () => {
+//     onChangeMode(themeMode === "dark" ? "light" : "dark")
+//   }
+
+//   return (
+//     <div className={styles.section}>
+//       <div
+//         data-testid="themeMenuOption"
+//         className={styles.sectionTitle}
+//         onClick={handleChangeMode}
+//       >
+//         <span>{t("theme")}</span>{" "}
+//         <span>{themeMode === "dark" ? "☾" : "☀"}</span>
+//       </div>
+//     </div>
+//   )
+// }

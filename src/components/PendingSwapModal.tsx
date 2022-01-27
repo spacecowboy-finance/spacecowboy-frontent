@@ -20,7 +20,6 @@ import { Zero } from "@ethersproject/constants"
 import { calculatePriceImpact } from "../utils/priceImpact"
 import { formatUnits } from "@ethersproject/units"
 import { gasBNFromState } from "../utils/gas"
-import { notifyHandler } from "../utils/notifyHandler"
 import styles from "./PendingSwapModal.module.scss"
 import { subtractSlippage } from "../utils/slippage"
 import { useBridgeContract } from "../hooks/useContract"
@@ -160,7 +159,6 @@ const PendingSwapModal = ({
         ])
         return
       }
-      transaction && notifyHandler(transaction.hash, "swap")
       await transaction?.wait()
       onClose()
     } catch (e) {

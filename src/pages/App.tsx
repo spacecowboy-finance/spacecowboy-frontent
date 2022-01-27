@@ -1,19 +1,17 @@
 import "../styles/global.scss"
 import "./NotifyStyle.scss"
 
-import { AppDispatch, AppState } from "../state"
+import { AppDispatch } from "../state"
 import { BLOCK_TIME, POOLS_MAP } from "../constants"
 import React, {
   ReactElement,
   Suspense,
   lazy,
   useCallback,
-  useEffect,
   useMemo,
 } from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
-import { isChainSupportedByNotify, notify } from "../utils/notifyHandler"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import Deposit from "./Deposit"
 import PendingSwapsProvider from "../providers/PendingSwapsProvider"
@@ -36,14 +34,7 @@ const Risk = lazy(() => import("./Risk"))
 
 export default function App(): ReactElement {
   const { chainId } = useActiveWeb3React()
-  const { userDarkMode } = useSelector((state: AppState) => state.user)
 
-  useEffect(() => {
-    notify?.config({
-      networkId: isChainSupportedByNotify(chainId) ? chainId : undefined,
-      darkMode: userDarkMode,
-    })
-  }, [chainId, userDarkMode])
   const pools = useMemo(() => {
     return Object.values(POOLS_MAP).filter(
       ({ addresses }) => chainId && addresses[chainId],

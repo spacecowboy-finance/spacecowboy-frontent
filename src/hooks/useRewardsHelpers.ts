@@ -7,7 +7,7 @@ import { AppState } from "../state"
 import { BigNumber } from "@ethersproject/bignumber"
 import { Zero } from "@ethersproject/constants"
 import checkAndApproveTokenForTrade from "../utils/checkAndApproveTokenForTrade"
-import { updateLastTransactionTimes } from "../state/application"
+import { updateLastTransactionTimes } from "../state/application/application"
 import { useActiveWeb3React } from "."
 
 export function useRewardsHelpers(poolName: PoolName): {

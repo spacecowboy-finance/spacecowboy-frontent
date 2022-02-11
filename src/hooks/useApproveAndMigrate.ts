@@ -8,7 +8,7 @@ import { Erc20 } from "../../types/ethers-contracts/Erc20"
 import checkAndApproveTokenForTrade from "../utils/checkAndApproveTokenForTrade"
 import { gasBNFromState } from "../utils/gas"
 import { getContract } from "../utils"
-import { updateLastTransactionTimes } from "../state/application"
+import { updateLastTransactionTimes } from "../state/application/application"
 import { useActiveWeb3React } from "."
 import { useGeneralizedSwapMigratorContract } from "./useContract"
 

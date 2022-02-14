@@ -8,7 +8,6 @@ import Button from "./Button"
 import { IS_SDL_LIVE } from "../constants"
 import NetworkDisplay from "./NetworkDisplay"
 import { RewardsBalancesContext } from "../providers/RewardsBalancesProvider"
-import { ReactComponent as SaddleLogo } from "../assets/icons/logo.svg"
 import SiteSettingsMenu from "./SiteSettingsMenu"
 import TokenClaimDialog from "./TokenClaimDialog"
 import Web3Status from "./Web3Status"
@@ -27,14 +26,11 @@ function TopMenu(): ReactElement {
 
   return (
     <AppBar position="static" elevation={0}>
-      <Toolbar
-        data-testid="topMenuContainer"
-        sx={{ mx: { md: 7 }, mt: { md: 3 } }}
-      >
+      <Toolbar data-testid="topMenuContainer">
         <Hidden mdDown>
           <Box flex={1} flexBasis="30%">
             <Link to="/">
-              <SaddleLogo />
+              <div className="logo"></div>
             </Link>
           </Box>
         </Hidden>
@@ -93,12 +89,11 @@ function RewardsButton({
   return IS_SDL_LIVE ? (
     <Button
       data-testid="rewardButton"
-      kind="secondary"
+      kind="ghost"
       onClick={() => setCurrentModal("tokenClaim")}
       size="medium"
     >
-      {formattedTotal}{" "}
-      <SaddleLogo width={24} height={24} style={{ marginLeft: 8 }} />
+      {formattedTotal}
     </Button>
   ) : null
 }
@@ -137,7 +132,7 @@ function IconButtonAndSettings(): ReactElement {
     <div style={{ position: "relative" }} ref={wrapperRef}>
       <Button
         data-testid="settingsMenuBtn"
-        kind="ternary"
+        kind="ghost"
         size="medium"
         onClick={() => setIsDropdownOpen((state) => !state)}
       >

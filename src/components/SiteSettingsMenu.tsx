@@ -6,7 +6,6 @@ import logo from "../assets/icons/logo.svg"
 import styles from "./SiteSettingsMenu.module.scss"
 import { useActiveWeb3React } from "../hooks"
 import useAddTokenToMetamask from "../hooks/useAddTokenToMetamask"
-import { useThemeSettings } from "../providers/ThemeSettingsProvider"
 import { useTranslation } from "react-i18next"
 
 export default function SiteSettingsMenu(): ReactElement {
@@ -16,7 +15,7 @@ export default function SiteSettingsMenu(): ReactElement {
       {IS_L2_SUPPORTED && <Divider />}
       <LanguageSection key="language" />
       <Divider />
-      <ThemeSection key="theme" />
+      {/* <ThemeSection key="theme" /> */}
       {IS_SDL_LIVE && <Divider />}
       {IS_SDL_LIVE && <AddTokenSection key="token" />}
     </div>
@@ -79,6 +78,39 @@ export const SUPPORTED_NETWORKS: {
     rpcUrls: ["https://arb1.arbitrum.io/rpc"],
     blockExplorerUrls: ["https://mainnet-arb-explorer.netlify.app"],
   },
+  [ChainId.ARBITRUM_TESTNET]: {
+    chainId: "0x66EEB",
+    chainName: "Arbitrum Test",
+    nativeCurrency: {
+      name: "Ethereum",
+      symbol: "ARETH",
+      decimals: 18,
+    },
+    rpcUrls: ["https://rinkeby.arbitrum.io/rpc"],
+    blockExplorerUrls: ["https://rinkeby-explorer.arbitrum.io"],
+  },
+  [ChainId.HARMONY_MAINNET]: {
+    chainId: "0x63564C40",
+    chainName: "Harmony",
+    nativeCurrency: {
+      name: "One",
+      symbol: "ONE",
+      decimals: 18,
+    },
+    rpcUrls: ["https://harmony-0-rpc.gateway.pokt.network"],
+    blockExplorerUrls: ["https://explorer.harmony.one"],
+  },
+  [ChainId.HARMONY_TESTNET]: {
+    chainId: "0x6357D2E0",
+    chainName: "Harmony Test",
+    nativeCurrency: {
+      name: "One",
+      symbol: "ONE",
+      decimals: 18,
+    },
+    rpcUrls: ["https://api.s0.b.hmny.io"],
+    blockExplorerUrls: ["https://explorer.testnet.harmony.one"],
+  },
 }
 function NetworkSection(): ReactElement {
   const { t } = useTranslation()
@@ -86,7 +118,9 @@ function NetworkSection(): ReactElement {
   const [isNetworkVisible, setIsNetworkVisible] = useState(false)
   const networks = [
     ChainId.MAINNET,
-    ...(IS_L2_SUPPORTED ? [ChainId.ARBITRUM] : []),
+    ChainId.HARMONY_MAINNET,
+    ...(IS_L2_SUPPORTED ? [ChainId.ARBITRUM_TESTNET] : []),
+    ChainId.HARMONY_TESTNET,
   ]
 
   return (
@@ -164,24 +198,29 @@ function LanguageSection(): ReactElement {
   )
 }
 
-function ThemeSection(): ReactElement {
-  const { t } = useTranslation()
-  const { themeMode, onChangeMode } = useThemeSettings()
+// Leaving this code here for future reference in case a light theme is added back in the future
+// Note: Be sure to add the import statement below to the top of the file
 
-  const handleChangeMode = () => {
-    onChangeMode(themeMode === "dark" ? "light" : "dark")
-  }
+//import { useThemeSettings } from "../providers/ThemeSettingsProvider"
 
-  return (
-    <div className={styles.section}>
-      <div
-        data-testid="themeMenuOption"
-        className={styles.sectionTitle}
-        onClick={handleChangeMode}
-      >
-        <span>{t("theme")}</span>{" "}
-        <span>{themeMode === "dark" ? "☾" : "☀"}</span>
-      </div>
-    </div>
-  )
-}
+// function ThemeSection(): ReactElement {
+//   const { t } = useTranslation()
+//   const { themeMode, onChangeMode } = useThemeSettings()
+
+//   const handleChangeMode = () => {
+//     onChangeMode(themeMode === "dark" ? "light" : "dark")
+//   }
+
+//   return (
+//     <div className={styles.section}>
+//       <div
+//         data-testid="themeMenuOption"
+//         className={styles.sectionTitle}
+//         onClick={handleChangeMode}
+//       >
+//         <span>{t("theme")}</span>{" "}
+//         <span>{themeMode === "dark" ? "☾" : "☀"}</span>
+//       </div>
+//     </div>
+//   )
+// }

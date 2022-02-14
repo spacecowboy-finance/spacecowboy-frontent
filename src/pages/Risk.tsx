@@ -52,13 +52,14 @@ function Risk(): ReactElement {
         <Typography variant="h3" mt={5} mb={2}>
           {t("unnecessaryApprovalAskQ")}
         </Typography>
-        <p>
-          {t("unnecessaryApprovalAskA")} <br />
+        <Typography variant="body1">
+          {t("unnecessaryApprovalAskA")}
+          <br />
           <br />
           <a href="https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729">
             ERC: Token standard · Issue #20 · ethereum/EIPs
           </a>
-        </p>
+        </Typography>
       </Container>
     </div>
   )

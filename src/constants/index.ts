@@ -17,9 +17,10 @@ import lusdLogo from "../assets/icons/lusd.svg"
 import metamaskIcon from "../assets/icons/metamask.svg"
 import mimLogo from "../assets/icons/mim.png"
 import nusdLogo from "../assets/icons/nusd.svg"
+import onebtcLogo from "../assets/icons/onebtc.png"
 import renbtcLogo from "../assets/icons/renbtc.svg"
 import saddleLPTokenLogo from "../assets/icons/saddle_lp_token.svg"
-import saddleLogo from "../assets/icons/logo_24.svg"
+import saddleLogo from "../assets/icons/logo_24.png"
 import sbtcLogo from "../assets/icons/sbtc.svg"
 import sethLogo from "../assets/icons/seth.svg"
 import susdLogo from "../assets/icons/susd.svg"
@@ -27,6 +28,7 @@ import tallyIcon from "../assets/icons/tally.svg"
 import tbtcLogo from "../assets/icons/tbtc.svg"
 import usdcLogo from "../assets/icons/usdc.svg"
 import usdtLogo from "../assets/icons/usdt.svg"
+import ustLogo from "../assets/icons/ust.png"
 import veth2Logo from "../assets/icons/veth2.svg"
 import walletconnectIcon from "../assets/icons/walletconnect.svg"
 import wbtcLogo from "../assets/icons/wbtc.svg"
@@ -49,6 +51,8 @@ export const WCUSD_METAPOOL_NAME = "wCUSD Metapool"
 export const WCUSD_METAPOOL_V2_NAME = "wCUSD Metapool V2"
 export const ARB_USD_POOL_NAME = "arbUSD Pool"
 export const FRAX_ARB_USD_POOL_V2_NAME = "frax-ArbUSD Pool V2"
+export const HARMONY_USD_POOL_NAME = "harmonyUSD Pool"
+export const HARMONY_BTC_POOL_NAME = "harmonyBTC Pool"
 export type PoolName =
   | typeof BTC_POOL_NAME
   | typeof BTC_POOL_V2_NAME
@@ -65,6 +69,8 @@ export type PoolName =
   | typeof WCUSD_METAPOOL_V2_NAME
   | typeof ARB_USD_POOL_NAME
   | typeof FRAX_ARB_USD_POOL_V2_NAME
+  | typeof HARMONY_USD_POOL_NAME
+  | typeof HARMONY_BTC_POOL_NAME
 
 export enum ChainId {
   MAINNET = 1,
@@ -74,6 +80,9 @@ export enum ChainId {
   // KOVAN = 42,
   HARDHAT = 31337,
   ARBITRUM = 42161,
+  ARBITRUM_TESTNET = 421611,
+  HARMONY_MAINNET = 1666600000,
+  HARMONY_TESTNET = 1666700000,
 }
 export enum PoolTypes {
   BTC,
@@ -269,10 +278,20 @@ export const D4_SWAP_ADDRESSES = buildAddresses({
 
 export const ARB_USD_SWAP_ADDRESSES = buildAddresses({
   [ChainId.ARBITRUM]: "0xBea9F78090bDB9e662d8CB301A00ad09A5b756e9",
+  [ChainId.ARBITRUM_TESTNET]: "0x4385A86Eb9F8B500d7E0Fef409c58980119509A5",
 })
 
 export const FRAX_ARB_USD_SWAP_V2_ADDRESSES = buildAddresses({
   [ChainId.ARBITRUM]: "0xfeEa4D1BacB0519E8f952460A70719944fe56Ee0",
+  [ChainId.ARBITRUM_TESTNET]: "0x06a654294453E26ec9f32dD5Ef8b3483001b2f9B",
+})
+
+export const HARMONY_USD_SWAP_ADDRESSES = buildAddresses({
+  [ChainId.HARMONY_TESTNET]: "0xd7d425434352B72BFba210078518998495F9F5C6",
+})
+
+export const HARMONY_BTC_SWAP_ADDRESSES = buildAddresses({
+  [ChainId.HARMONY_TESTNET]: "0x11cB8315D0E4d78ec0F446Ca9D4176552e7244eC",
 })
 
 export const RETROACTIVE_SDL_MERKLETREE_DATA = buildAddresses({
@@ -312,10 +331,12 @@ export const WCUSD_SWAP_TOKEN_V2_CONTRACT_ADDRESSES = buildAddresses({
 
 export const ARB_USD_SWAP_TOKEN_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.ARBITRUM]: "0xc969dD0A7AB0F8a0C5A69C0839dB39b6C928bC08",
+  [ChainId.ARBITRUM_TESTNET]: "0x884fdECA00b23E3bd27333935719f0a4B12C1E9A",
 })
 
 export const FRAX_ARB_USD_SWAP_V2_TOKEN_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.ARBITRUM]: "0x0a20c2FFa10cD43F67D06170422505b7D6fC0953",
+  [ChainId.ARBITRUM_TESTNET]: "0xEB2D14d90DE43eBcDfe14131518B4C7d3a1841ef",
 })
 
 export const BTC_SWAP_TOKEN_CONTRACT_ADDRESSES = buildAddresses({
@@ -362,6 +383,14 @@ export const SDL_TOKEN_ADDRESSES = buildAddresses({
   [ChainId.HARDHAT]: "0x4EE6eCAD1c2Dae9f525404De8555724e3c35d07B",
   [ChainId.MAINNET]: "0xf1Dc500FdE233A4055e25e5BbF516372BC4F6871",
   [ChainId.ARBITRUM]: "0x75c9bc761d88f70156daf83aa010e84680baf131",
+})
+
+export const HARMONY_USD_SWAP_TOKEN_CONTRACT_ADDRESSES = buildAddresses({
+  [ChainId.HARMONY_TESTNET]: "0x52F51b129941C8484F55618B88812A19C2a2C1c6",
+})
+
+export const HARMONY_BTC_SWAP_TOKEN_CONTRACT_ADDRESSES = buildAddresses({
+  [ChainId.HARMONY_TESTNET]: "0xE8B2701b2e0c435ed1F4EC0e5a18A1f70fb87E0c",
 })
 
 export const SDL_TOKEN = new Token(
@@ -507,6 +536,28 @@ export const FRAX_ARB_USD_SWAP_V2_TOKEN = new Token(
   true,
 )
 
+export const HARMONY_USD_SWAP_TOKEN = new Token(
+  HARMONY_USD_SWAP_TOKEN_CONTRACT_ADDRESSES,
+  18,
+  "scHarmonyUSD",
+  "scHarmonyUSD",
+  "Space Cowboy UST/USDC/USDT",
+  saddleLogo,
+  false,
+  true,
+)
+
+export const HARMONY_BTC_SWAP_TOKEN = new Token(
+  HARMONY_BTC_SWAP_TOKEN_CONTRACT_ADDRESSES,
+  18,
+  "scHarmonyBTC",
+  "scHarmonyBTC",
+  "Space Cowboy WBTC/1BTC",
+  saddleLogo,
+  false,
+  true,
+)
+
 export const VETH2_SWAP_TOKEN = new Token(
   VETH2_SWAP_TOKEN_CONTRACT_ADDRESSES,
   18,
@@ -587,6 +638,8 @@ const USDC_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.ROPSTEN]: "0xA4fe4981f7550884E7E6224F0c78245DC145b2F2",
   [ChainId.HARDHAT]: "0x9A676e781A523b5d0C0e43731313A708CB607508",
   [ChainId.ARBITRUM]: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+  [ChainId.ARBITRUM_TESTNET]: "0xCB299695Cf9D9A9301e1d6764bf49B271c8f183C",
+  [ChainId.HARMONY_TESTNET]: "0x251Cff21C9f2bcA8C23C8D5ed380E3FbB068C917",
 })
 export const USDC = new Token(
   USDC_CONTRACT_ADDRESSES,
@@ -602,6 +655,8 @@ const USDT_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.ROPSTEN]: "0x0593d1b92e8Ba6bBC428923245891efF0311Fa15",
   [ChainId.HARDHAT]: "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1",
   [ChainId.ARBITRUM]: "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+  [ChainId.ARBITRUM_TESTNET]: "0x91585Ae0759F37Ac0DEe695Aa2d24bFD28e05d18",
+  [ChainId.HARMONY_TESTNET]: "0xccebA24E908268D2bAA9bd58c730125202274f7a",
 })
 export const USDT = new Token(
   USDT_CONTRACT_ADDRESSES,
@@ -612,8 +667,21 @@ export const USDT = new Token(
   usdtLogo,
 )
 
+const UST_CONTRACT_ADDRESSES = buildAddresses({
+  [ChainId.HARMONY_TESTNET]: "0xd8B28f243747D2B528f180C45011d49BD8249D7a",
+})
+export const UST = new Token(
+  UST_CONTRACT_ADDRESSES,
+  18,
+  "UST",
+  "terrausd",
+  "UST",
+  ustLogo,
+)
+
 const NUSD_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.ARBITRUM]: "0x2913e812cf0dcca30fb28e6cac3d2dcff4497688",
+  [ChainId.ARBITRUM_TESTNET]: "0xA4E99B8979978eeD3f6356232aDEDa36E419E9f7",
 })
 export const NUSD = new Token(
   NUSD_CONTRACT_ADDRESSES,
@@ -626,6 +694,7 @@ export const NUSD = new Token(
 
 const MIM_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.ARBITRUM]: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+  [ChainId.ARBITRUM_TESTNET]: "0xB68Cd77f5804ef56d39Ddd9F921E2C1Ea7d342d9",
 })
 export const MIM = new Token(
   MIM_CONTRACT_ADDRESSES,
@@ -640,6 +709,7 @@ export const STABLECOIN_POOL_TOKENS = [DAI, USDC, USDT]
 export const SUSD_POOL_TOKENS = [SUSD, ...STABLECOIN_POOL_TOKENS]
 export const SUSD_UNDERLYING_POOL_TOKENS = [SUSD, STABLECOIN_SWAP_V2_TOKEN]
 export const ARB_USD_POOL_TOKENS = [NUSD, MIM, USDC, USDT]
+export const HARMONY_USD_POOL_TOKENS = [UST, USDC, USDT]
 
 // Tokenized BTC
 const TBTC_CONTRACT_ADDRESSES = buildAddresses({
@@ -673,6 +743,7 @@ const WBTC_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.MAINNET]: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
   [ChainId.ROPSTEN]: "0x7264594dFB80a150f80b2988862605dDfda53727",
   [ChainId.HARDHAT]: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+  [ChainId.HARMONY_TESTNET]: "0xf1F1eC05885eC10CF743C3C3C06eCFFbCDc768E7",
 })
 export const WBTC = new Token(
   WBTC_CONTRACT_ADDRESSES,
@@ -681,6 +752,18 @@ export const WBTC = new Token(
   "wrapped-bitcoin",
   "WBTC",
   wbtcLogo,
+)
+
+const ONEBTC_CONTRACT_ADDRESSES = buildAddresses({
+  [ChainId.HARMONY_TESTNET]: "0x2E8578831bE414eD844c58d902051B1E669891e9",
+})
+export const ONEBTC = new Token(
+  ONEBTC_CONTRACT_ADDRESSES,
+  8,
+  "1BTC",
+  "wrapped-bitcoin",
+  "1BTC",
+  onebtcLogo,
 )
 
 const RENBTC_CONTRACT_ADDRESSES = buildAddresses({
@@ -717,6 +800,8 @@ export const BTC_POOL_V2_TOKENS = [WBTC, RENBTC, SBTC]
 
 export const TBTC_POOL_TOKENS = [TBTC_V2, ...BTC_POOL_V2_TOKENS]
 export const TBTC_UNDERLYING_POOL_TOKENS = [TBTC_V2, BTC_SWAP_V2_TOKEN]
+
+export const HARMONY_BTC_POOL_TOKENS = [WBTC, ONEBTC]
 
 const WETH_CONTRACT_ADDRESSES = buildAddresses({
   [ChainId.MAINNET]: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -940,7 +1025,10 @@ export const POOLS_MAP: PoolsMap = {
     isSynthetic: false,
     type: PoolTypes.USD,
     route: "arbusd",
-    rewardPids: buildPids({ [ChainId.ARBITRUM]: 1 }),
+    rewardPids: buildPids({
+      [ChainId.ARBITRUM]: 1,
+      [ChainId.ARBITRUM_TESTNET]: 1,
+    }),
   },
   [FRAX_ARB_USD_POOL_V2_NAME]: {
     name: FRAX_ARB_USD_POOL_V2_NAME,
@@ -950,6 +1038,29 @@ export const POOLS_MAP: PoolsMap = {
     isSynthetic: false,
     type: PoolTypes.USD,
     route: "frax-arbusdv2",
+    rewardPids: buildPids({}),
+  },
+  [HARMONY_USD_POOL_NAME]: {
+    name: HARMONY_USD_POOL_NAME,
+    addresses: HARMONY_USD_SWAP_ADDRESSES,
+    lpToken: HARMONY_USD_SWAP_TOKEN,
+    poolTokens: HARMONY_USD_POOL_TOKENS,
+    isSynthetic: false,
+    type: PoolTypes.USD,
+    route: "harmonyusd",
+    rewardPids: buildPids({
+      [ChainId.HARMONY_MAINNET]: 1,
+      [ChainId.HARMONY_TESTNET]: 1,
+    }),
+  },
+  [HARMONY_BTC_POOL_NAME]: {
+    name: HARMONY_BTC_POOL_NAME,
+    addresses: HARMONY_BTC_SWAP_ADDRESSES,
+    lpToken: HARMONY_BTC_SWAP_TOKEN,
+    poolTokens: HARMONY_BTC_POOL_TOKENS,
+    isSynthetic: false,
+    type: PoolTypes.BTC,
+    route: "harmonybtc",
     rewardPids: buildPids({}),
   },
   [SUSD_METAPOOL_V2_NAME]: {

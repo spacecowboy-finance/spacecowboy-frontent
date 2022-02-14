@@ -24,7 +24,7 @@ div.poolInfoCard {
       margin-right: 8px;
     }
     .underline {
-      border-bottom: 1px dotted var(--text);
+      border-bottom: 1px dotted var(--text-darker);
 
       &:hover {
         cursor: help;

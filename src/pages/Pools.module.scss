@@ -2,11 +2,12 @@
 @import "../styles/viewports";
 
 div.poolsPage {
-  min-height: 100vh;
+  min-height: calc(100vh - 68px);
   background: var(--background-main);
   color: var(--text);
   font-size: 16px;
   padding-bottom: 80px;
+  padding-top: 20px;
 
   .filters {
     width: max-content;
@@ -31,10 +32,10 @@ div.poolsPage {
   }
 
   .outdated {
-    color: $yellow;
+    color: $orange;
 
     &.selected {
-      background-color: $yellow;
+      background-color: $orange;
       color: $text-black;
     }
   }

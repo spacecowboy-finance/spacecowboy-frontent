@@ -125,16 +125,7 @@ export default function PoolOverview({
         <div className="poolInfo">
           {poolData.sdlPerDay != null && IS_SDL_LIVE && (
             <div className="margin">
-              <span className="label">
-                <a
-                  href="https://blog.saddle.finance/introducing-sdl"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ textDecoration: "underline" }}
-                >
-                  SDL/24h
-                </a>
-              </span>
+              <span className="label">SPACE/24h</span>
               <span>
                 <img src={logo} className="tokenIcon" />
                 {formattedData.sdlPerDay}

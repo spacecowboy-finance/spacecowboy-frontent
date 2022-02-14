@@ -5,6 +5,8 @@ import {
   BTC_POOL_V2_NAME,
   D4_POOL_NAME,
   FRAX_ARB_USD_POOL_V2_NAME,
+  HARMONY_BTC_POOL_NAME,
+  HARMONY_USD_POOL_NAME,
   POOLS_MAP,
   PoolName,
   PoolTypes,
@@ -59,6 +61,12 @@ function Pools(): ReactElement | null {
   const [arbUsdPoolData, arbUsdUserShareData] = usePoolData(ARB_USD_POOL_NAME)
   const [fraxArbUsdPoolV2Data, fraxArbUsdV2UserShareData] = usePoolData(
     FRAX_ARB_USD_POOL_V2_NAME,
+  )
+  const [harmonyUsdPoolData, harmonyUsdUserShareData] = usePoolData(
+    HARMONY_USD_POOL_NAME,
+  )
+  const [harmonyBtcPoolData, harmonyBtcUserShareData] = usePoolData(
+    HARMONY_BTC_POOL_NAME,
   )
   const [currentModal, setCurrentModal] = useState<string | null>(null)
   const approveAndMigrate = useApproveAndMigrate()
@@ -183,6 +191,20 @@ function Pools(): ReactElement | null {
         poolData: fraxArbUsdPoolV2Data,
         userShareData: fraxArbUsdV2UserShareData,
         poolRoute: "/pools/frax-arbusdv2",
+      }
+    } else if (poolName === HARMONY_USD_POOL_NAME) {
+      return {
+        name: HARMONY_USD_POOL_NAME,
+        poolData: harmonyUsdPoolData,
+        userShareData: harmonyUsdUserShareData,
+        poolRoute: "/pools/harmonyusd",
+      }
+    } else if (poolName === HARMONY_BTC_POOL_NAME) {
+      return {
+        name: HARMONY_BTC_POOL_NAME,
+        poolData: harmonyBtcPoolData,
+        userShareData: harmonyBtcUserShareData,
+        poolRoute: "/pools/harmonybtc",
       }
     } else {
       return {

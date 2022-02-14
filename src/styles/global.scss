@@ -88,31 +88,30 @@ body.dark {
   --primary-background: #000;
   --background: #000;
   --background-lightgrey: #{$black80};
-  --background-element: rgba(0, 0, 0, 0.56);
+  --background-element: rgba(0, 0, 0);
   --background-element-hover: rgba(0, 0, 0, 0.8);
-  --background-main: #000 url("../assets/bg.svg") center/auto 60% no-repeat
-    fixed;
-  --background-logo: #ffffe9;
+  --background-main: url("../assets/bg1.png") left top / cover no-repeat fixed;
+  --background-logo: #000;
   --secondary-button: #{$dark-purple};
-  --emphasis-1: #{$indigo3}; // passive state
-  --emphasis-2: #{$indigo2}; // active state
+  --emphasis-1: #03a9f4; // passive state
+  --emphasis-2: #03a9f4; // active state
   --primary-accent: #{$primary};
-  --outline: #fff;
+  --outline: #{$primary};;
   --option-hover: #{$primary-blue-dark};
-  --outline-gray: #{$white30};
+  --outline-gray: #fff;
   --tab: #{$white};
 
   --text: #fff;
-  --text-darker: #ffffe9;
-  --text-lighter: #bbbbbb;
-  --text-lightest: #888888;
-  --text-title: #ffffe9;
+  --text-darker: #fff;
+  --text-lighter: #fff;
+  --text-lightest: #fff;
+  --text-title: #03a9f4;
   --text-primary: #{$primary};
   --text-selected: #{$primary};
   --text-secondary-button: #{$blue};
   --text-secondary-button-disabled: #{$blue40T};
   --header-text: #{$primary};
-  --sign-graph: #{$primary-blue};
+  --sign-graph: #{$primary};
 
   --shadow: 0px 2px 8px rgba(39, 14, 1, 0.18);
   --shadow-hover: 2px 2px 12px rgba(68, 64, 64, 0.14);

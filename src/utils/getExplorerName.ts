@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Blockchain } from "../constants"
 
 export default function getExplorerName(blockchain: Blockchain): string {

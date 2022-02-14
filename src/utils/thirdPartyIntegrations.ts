@@ -18,7 +18,7 @@ import { KeepRewards } from "../../types/ethers-contracts/KeepRewards"
 import { MulticallContract } from "../types/ethcall"
 import SGT_REWARDS_ABI from "../constants/abis/sharedStakeStakingRewards.json"
 import { SharedStakeStakingRewards } from "../../types/ethers-contracts/SharedStakeStakingRewards"
-import { TokenPricesUSD } from "../state/application"
+import { TokenPricesUSD } from "../state/application/application"
 import { Web3Provider } from "@ethersproject/providers"
 import { parseUnits } from "@ethersproject/units"
 

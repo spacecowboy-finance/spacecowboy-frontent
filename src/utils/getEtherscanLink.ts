@@ -15,6 +15,7 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   42: "kovan.",
   31337: "Hardhat.",
   42161: "Arbitrum.",
+  421611: "Arbitrum Testnet",
   1666600000: "explorer.harmony.one/#",
   1666700000: "explorer.testnet.harmony.one/#",
 }

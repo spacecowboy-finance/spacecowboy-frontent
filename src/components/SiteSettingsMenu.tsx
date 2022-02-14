@@ -12,19 +12,19 @@ export default function SiteSettingsMenu(): ReactElement {
   return (
     <div data-testid="settingsMenuContainer" className={styles.container}>
       {IS_L2_SUPPORTED && <NetworkSection key="network" />}
-      {IS_L2_SUPPORTED && <Divider />}
-      <LanguageSection key="language" />
-      <Divider />
+      {/* {IS_L2_SUPPORTED && <Divider />} */}
+      {/* <LanguageSection key="language" />
+      <Divider /> */}
       {/* <ThemeSection key="theme" /> */}
-      {IS_SDL_LIVE && <Divider />}
+      {/* {IS_SDL_LIVE && <Divider />} */}
       {IS_SDL_LIVE && <AddTokenSection key="token" />}
     </div>
   )
 }
 
-function Divider(): ReactElement {
-  return <div className={styles.divider}></div>
-}
+// function Divider(): ReactElement {
+//   return <div className={styles.divider}></div>
+// }
 
 function AddTokenSection(): ReactElement | null {
   const { addToken, canAdd } = useAddTokenToMetamask({
@@ -56,38 +56,49 @@ export const SUPPORTED_NETWORKS: {
     blockExplorerUrls: string[]
   }
 } = {
-  [ChainId.MAINNET]: {
-    chainId: "0x1",
-    chainName: "Ethereum",
+  // [ChainId.MAINNET]: {
+  //   chainId: "0x1",
+  //   chainName: "Ethereum",
+  //   nativeCurrency: {
+  //     name: "Ethereum",
+  //     symbol: "ETH",
+  //     decimals: 18,
+  //   },
+  //   rpcUrls: ["https://mainnet.infura.io/v3"],
+  //   blockExplorerUrls: ["https://etherscan.com"],
+  // },
+  // [ChainId.ARBITRUM]: {
+  //   chainId: "0xA4B1",
+  //   chainName: "Arbitrum",
+  //   nativeCurrency: {
+  //     name: "Ethereum",
+  //     symbol: "ETH",
+  //     decimals: 18,
+  //   },
+  //   rpcUrls: ["https://arb1.arbitrum.io/rpc"],
+  //   blockExplorerUrls: ["https://mainnet-arb-explorer.netlify.app"],
+  // },
+  // [ChainId.ARBITRUM_TESTNET]: {
+  //   chainId: "0x66EEB",
+  //   chainName: "Arbitrum Test",
+  //   nativeCurrency: {
+  //     name: "Ethereum",
+  //     symbol: "ARETH",
+  //     decimals: 18,
+  //   },
+  //   rpcUrls: ["https://rinkeby.arbitrum.io/rpc"],
+  //   blockExplorerUrls: ["https://rinkeby-explorer.arbitrum.io"],
+  // },
+  [ChainId.HARMONY_TESTNET]: {
+    chainId: "0x6357D2E0",
+    chainName: "Harmony Test",
     nativeCurrency: {
-      name: "Ethereum",
-      symbol: "ETH",
+      name: "One",
+      symbol: "ONE",
       decimals: 18,
     },
-    rpcUrls: ["https://mainnet.infura.io/v3"],
-    blockExplorerUrls: ["https://etherscan.com"],
-  },
-  [ChainId.ARBITRUM]: {
-    chainId: "0xA4B1",
-    chainName: "Arbitrum",
-    nativeCurrency: {
-      name: "Ethereum",
-      symbol: "ETH",
-      decimals: 18,
-    },
-    rpcUrls: ["https://arb1.arbitrum.io/rpc"],
-    blockExplorerUrls: ["https://mainnet-arb-explorer.netlify.app"],
-  },
-  [ChainId.ARBITRUM_TESTNET]: {
-    chainId: "0x66EEB",
-    chainName: "Arbitrum Test",
-    nativeCurrency: {
-      name: "Ethereum",
-      symbol: "ARETH",
-      decimals: 18,
-    },
-    rpcUrls: ["https://rinkeby.arbitrum.io/rpc"],
-    blockExplorerUrls: ["https://rinkeby-explorer.arbitrum.io"],
+    rpcUrls: ["https://api.s0.b.hmny.io"],
+    blockExplorerUrls: ["https://explorer.testnet.harmony.one"],
   },
   [ChainId.HARMONY_MAINNET]: {
     chainId: "0x63564C40",
@@ -99,17 +110,6 @@ export const SUPPORTED_NETWORKS: {
     },
     rpcUrls: ["https://harmony-0-rpc.gateway.pokt.network"],
     blockExplorerUrls: ["https://explorer.harmony.one"],
-  },
-  [ChainId.HARMONY_TESTNET]: {
-    chainId: "0x6357D2E0",
-    chainName: "Harmony Test",
-    nativeCurrency: {
-      name: "One",
-      symbol: "ONE",
-      decimals: 18,
-    },
-    rpcUrls: ["https://api.s0.b.hmny.io"],
-    blockExplorerUrls: ["https://explorer.testnet.harmony.one"],
   },
 }
 function NetworkSection(): ReactElement {
@@ -164,39 +164,39 @@ function NetworkSection(): ReactElement {
   )
 }
 
-function LanguageSection(): ReactElement {
-  const { t, i18n } = useTranslation()
+// function LanguageSection(): ReactElement {
+//   const { t, i18n } = useTranslation()
 
-  const [isLanguageVisible, setIsLanguageVisible] = useState(false)
-  const languageOptions = [
-    { displayText: "English", i18nKey: "en" },
-    { displayText: "简体中文", i18nKey: "zh" },
-  ]
-  const currentLanguage = i18n.language
-  return (
-    <div data-testid="languageMenu" className={styles.section}>
-      <div
-        className={styles.sectionTitle}
-        onClick={() => setIsLanguageVisible((state) => !state)}
-      >
-        <span>{t("language")}</span>{" "}
-        <span>{isLanguageVisible ? "∧" : "∨"}</span>
-      </div>
-      {isLanguageVisible &&
-        languageOptions.map(({ displayText, i18nKey }) => (
-          <div
-            className={classnames(styles.sectionItem, {
-              [styles.active]: currentLanguage === i18nKey,
-            })}
-            onClick={() => i18n.changeLanguage(i18nKey)}
-            key={displayText}
-          >
-            {displayText}
-          </div>
-        ))}
-    </div>
-  )
-}
+//   const [isLanguageVisible, setIsLanguageVisible] = useState(false)
+//   const languageOptions = [
+//     { displayText: "English", i18nKey: "en" },
+//     { displayText: "简体中文", i18nKey: "zh" },
+//   ]
+//   const currentLanguage = i18n.language
+//   return (
+//     <div data-testid="languageMenu" className={styles.section}>
+//       <div
+//         className={styles.sectionTitle}
+//         onClick={() => setIsLanguageVisible((state) => !state)}
+//       >
+//         <span>{t("language")}</span>{" "}
+//         <span>{isLanguageVisible ? "∧" : "∨"}</span>
+//       </div>
+//       {isLanguageVisible &&
+//         languageOptions.map(({ displayText, i18nKey }) => (
+//           <div
+//             className={classnames(styles.sectionItem, {
+//               [styles.active]: currentLanguage === i18nKey,
+//             })}
+//             onClick={() => i18n.changeLanguage(i18nKey)}
+//             key={displayText}
+//           >
+//             {displayText}
+//           </div>
+//         ))}
+//     </div>
+//   )
+// }
 
 // Leaving this code here for future reference in case a light theme is added back in the future
 // Note: Be sure to add the import statement below to the top of the file

@@ -1,6 +1,6 @@
 import { AppDispatch } from "../state"
 import retry from "async-retry"
-import { updateSwapStats } from "../state/application"
+import { updateSwapStats } from "../state/application/application"
 
 const swapStatsURI = "https://ipfs.saddle.exchange/swap-stats.json"
 

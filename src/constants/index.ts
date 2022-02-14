@@ -75,14 +75,19 @@ export type PoolName =
 export enum ChainId {
   MAINNET = 1,
   ROPSTEN = 3,
-  // RINKEBY = 4,
-  // GÖRLI = 5,
-  // KOVAN = 42,
+  RINKEBY = 4,
+  GÖRLI = 5,
+  KOVAN = 42,
   HARDHAT = 31337,
   ARBITRUM = 42161,
   ARBITRUM_TESTNET = 421611,
   HARMONY_MAINNET = 1666600000,
   HARMONY_TESTNET = 1666700000,
+}
+export declare enum Blockchain {
+  ETHEREUM = 1,
+  BINANCE_SMART_CHAIN = 2,
+  HARMONY = 3,
 }
 export enum PoolTypes {
   BTC,

@@ -8,7 +8,7 @@ import { SwapFlashLoan } from "../../types/ethers-contracts/SwapFlashLoan"
 import { Web3Provider } from "@ethersproject/providers"
 import { getContract } from "./index"
 import retry from "async-retry"
-import { updateTokensPricesUSD } from "../state/application"
+import { updateTokensPricesUSD } from "../state/application/application"
 
 const coinGeckoAPI = "https://api.coingecko.com/api/v3/simple/price"
 

@@ -28,7 +28,7 @@ import { SwapGuarded } from "../../types/ethers-contracts/SwapGuarded"
 import checkAndApproveTokenForTrade from "../utils/checkAndApproveTokenForTrade"
 import { parseUnits } from "@ethersproject/units"
 import { subtractSlippage } from "../utils/slippage"
-import { updateLastTransactionTimes } from "../state/application"
+import { updateLastTransactionTimes } from "../state/application/application"
 import { useActiveWeb3React } from "."
 import { useMemo } from "react"
 

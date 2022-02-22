@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 import React, { ReactElement, useContext, useRef, useState } from "react"
 
 import Button from "./Button"
-import { IS_SDL_LIVE } from "../constants"
+import { IS_SCB_LIVE } from "../constants"
 import NetworkDisplay from "./NetworkDisplay"
 import { RewardsBalancesContext } from "../providers/RewardsBalancesProvider"
 import SiteSettingsMenu from "./SiteSettingsMenu"
@@ -68,7 +68,7 @@ function TopMenu(): ReactElement {
           <RewardsButton setCurrentModal={setCurrentModal} />
           <Web3Status />
           <NetworkDisplayAndSettings />
-          <IconButtonAndSettings />
+          {/* <IconButtonAndSettings /> */}
         </div>
         <TokenClaimDialog
           open={currentModal === "tokenClaim"}
@@ -86,7 +86,7 @@ function RewardsButton({
 }): ReactElement | null {
   const rewardBalances = useContext(RewardsBalancesContext)
   const formattedTotal = formatBNToShortString(rewardBalances.total, 18)
-  return IS_SDL_LIVE ? (
+  return IS_SCB_LIVE ? (
     <Button
       data-testid="rewardButton"
       kind="ghost"
@@ -119,42 +119,42 @@ function NetworkDisplayAndSettings(): ReactElement {
   )
 }
 
-function IconButtonAndSettings(): ReactElement {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const wrapperRef = useRef(null)
-  useDetectOutsideClick(
-    wrapperRef,
-    () => setIsDropdownOpen(false),
-    isDropdownOpen,
-  )
+// function IconButtonAndSettings(): ReactElement {
+//   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+//   const wrapperRef = useRef(null)
+//   useDetectOutsideClick(
+//     wrapperRef,
+//     () => setIsDropdownOpen(false),
+//     isDropdownOpen,
+//   )
 
-  return (
-    <div style={{ position: "relative" }} ref={wrapperRef}>
-      <Button
-        data-testid="settingsMenuBtn"
-        kind="ghost"
-        size="medium"
-        onClick={() => setIsDropdownOpen((state) => !state)}
-      >
-        <svg
-          width="6"
-          height="22"
-          viewBox="0 0 6 22"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className={"hamburger"}
-        >
-          <circle cx="3" cy="3" r="2.5" />
-          <circle cx="3" cy="10.5" r="2.5" />
-          <circle cx="3" cy="18" r="2.5" />
-        </svg>
-      </Button>
-      {isDropdownOpen && (
-        <div className="siteSettingsWrapper">
-          <SiteSettingsMenu key="buttonSettings" />
-        </div>
-      )}
-    </div>
-  )
-}
+//   return (
+//     <div style={{ position: "relative" }} ref={wrapperRef}>
+//       <Button
+//         data-testid="settingsMenuBtn"
+//         kind="ghost"
+//         size="medium"
+//         onClick={() => setIsDropdownOpen((state) => !state)}
+//       >
+//         <svg
+//           width="6"
+//           height="22"
+//           viewBox="0 0 6 22"
+//           fill="none"
+//           xmlns="http://www.w3.org/2000/svg"
+//           className={"hamburger"}
+//         >
+//           <circle cx="3" cy="3" r="2.5" />
+//           <circle cx="3" cy="10.5" r="2.5" />
+//           <circle cx="3" cy="18" r="2.5" />
+//         </svg>
+//       </Button>
+//       {isDropdownOpen && (
+//         <div className="siteSettingsWrapper">
+//           <SiteSettingsMenu key="buttonSettings" />
+//         </div>
+//       )}
+//     </div>
+//   )
+// }
 export default TopMenu

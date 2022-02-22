@@ -1,6 +1,6 @@
 import "./MyFarm.scss"
 
-import { IS_SDL_LIVE, PoolName } from "../constants"
+import { IS_SCB_LIVE, PoolName } from "../constants"
 import React, { ReactElement } from "react"
 import { commify, formatBNToString } from "../utils"
 
@@ -27,7 +27,7 @@ export default function MyFarm({
   const formattedLpStakedBalance = commify(
     formatBNToString(amountStaked, 18, 4),
   )
-  return isPoolIncentivized && IS_SDL_LIVE ? (
+  return isPoolIncentivized && IS_SCB_LIVE ? (
     <div className="myFarm">
       <h4>{t("myFarm")}</h4>
       <div className="item" style={{ marginBottom: 16 }}>

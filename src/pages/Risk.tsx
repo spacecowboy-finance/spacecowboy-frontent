@@ -38,27 +38,10 @@ function Risk(): ReactElement {
           {t("riskAudits4")}
         </Typography>
         <Typography variant="h3" mt={5} mb={2}>
-          {t("adminKeys")}
-        </Typography>
-        <Typography variant="body1" data-testid="risk-adminkeys">
-          {t("riskAdminKeys")}
-        </Typography>
-        <Typography variant="h3" mt={5} mb={2}>
           {t("lossOfPeg")}
         </Typography>
         <Typography variant="body1" data-testid="risk-lossofpeg">
           {t("riskLossOfPeg")}
-        </Typography>
-        <Typography variant="h3" mt={5} mb={2}>
-          {t("unnecessaryApprovalAskQ")}
-        </Typography>
-        <Typography variant="body1">
-          {t("unnecessaryApprovalAskA")}
-          <br />
-          <br />
-          <a href="https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729">
-            ERC: Token standard · Issue #20 · ethereum/EIPs
-          </a>
         </Typography>
       </Container>
     </div>

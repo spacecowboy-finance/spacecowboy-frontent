@@ -1,7 +1,7 @@
 import "./PoolOverview.scss"
 
 import {
-  IS_SDL_LIVE,
+  IS_SCB_LIVE,
   POOLS_MAP,
   PoolTypes,
   TOKENS_MAP,
@@ -123,7 +123,7 @@ export default function PoolOverview({
 
       <div className="right">
         <div className="poolInfo">
-          {poolData.sdlPerDay != null && IS_SDL_LIVE && (
+          {poolData.sdlPerDay != null && IS_SCB_LIVE && (
             <div className="margin">
               <span className="label">SPACE/24h</span>
               <span>

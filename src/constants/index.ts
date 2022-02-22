@@ -1286,5 +1286,5 @@ export const SYNTH_TRACKING_ID =
 // FLAGS
 export const IS_VIRTUAL_SWAP_ACTIVE = true
 export const IS_L2_SUPPORTED = true
-export const IS_SDL_LIVE = true
+export const IS_SCB_LIVE = false
 // FLAGS END

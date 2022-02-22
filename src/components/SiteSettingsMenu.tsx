@@ -1,5 +1,5 @@
-import { ChainId, IS_L2_SUPPORTED, IS_SDL_LIVE, SDL_TOKEN } from "../constants"
-import React, { ReactElement, useState } from "react"
+import { ChainId, IS_SCB_LIVE, SDL_TOKEN } from "../constants"
+import React, { ReactElement } from "react"
 
 import classnames from "classnames"
 import logo from "../assets/icons/logo.svg"
@@ -11,20 +11,21 @@ import { useTranslation } from "react-i18next"
 export default function SiteSettingsMenu(): ReactElement {
   return (
     <div data-testid="settingsMenuContainer" className={styles.container}>
-      {IS_L2_SUPPORTED && <NetworkSection key="network" />}
-      {/* {IS_L2_SUPPORTED && <Divider />} */}
+      {/* {IS_SCB_LIVE && <NetworkSection key="network" />} */}
+      {/* {IS_SCB_LIVE && <Divider />} */}
       {/* <LanguageSection key="language" />
       <Divider /> */}
       {/* <ThemeSection key="theme" /> */}
-      {/* {IS_SDL_LIVE && <Divider />} */}
-      {IS_SDL_LIVE && <AddTokenSection key="token" />}
+      <NetworkSection key="network" />
+      {IS_SCB_LIVE && <Divider />}
+      {IS_SCB_LIVE && <AddTokenSection key="token" />}
     </div>
   )
 }
 
-// function Divider(): ReactElement {
-//   return <div className={styles.divider}></div>
-// }
+function Divider(): ReactElement {
+  return <div className={styles.divider}></div>
+}
 
 function AddTokenSection(): ReactElement | null {
   const { addToken, canAdd } = useAddTokenToMetamask({
@@ -113,53 +114,49 @@ export const SUPPORTED_NETWORKS: {
   },
 }
 function NetworkSection(): ReactElement {
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
   const { chainId: activeChainId, library, account } = useActiveWeb3React()
-  const [isNetworkVisible, setIsNetworkVisible] = useState(false)
+  // const [isNetworkVisible, setIsNetworkVisible] = useState(false)
   const networks = [
-    ChainId.MAINNET,
+    // ChainId.MAINNET,
     ChainId.HARMONY_MAINNET,
-    ...(IS_L2_SUPPORTED ? [ChainId.ARBITRUM_TESTNET] : []),
+    // ...(IS_L2_SUPPORTED ? [ChainId.ARBITRUM_TESTNET] : []),
     ChainId.HARMONY_TESTNET,
   ]
 
   return (
     <div data-testid="networkMenuContainer" className={styles.section}>
-      <div
+      {/* <div
         data-testid="networkMenuTitle"
         className={styles.sectionTitle}
         onClick={() => setIsNetworkVisible((state) => !state)}
       >
         <span>{t("network")}</span> <span>{isNetworkVisible ? "∧" : "∨"}</span>
-      </div>
-      {isNetworkVisible &&
-        networks.map((chainId) => {
-          const params = SUPPORTED_NETWORKS[chainId]
+      </div> */}
+      {networks.map((chainId) => {
+        const params = SUPPORTED_NETWORKS[chainId]
 
-          return (
-            <div
-              className={classnames(styles.sectionItem, {
-                [styles.active]: activeChainId === chainId,
-              })}
-              onClick={() => {
-                if (chainId === ChainId.MAINNET) {
-                  void library?.send("wallet_switchEthereumChain", [
-                    { chainId: "0x1" },
-                    account,
-                  ])
-                } else {
-                  void library?.send("wallet_addEthereumChain", [
-                    params,
-                    account,
-                  ])
-                }
-              }}
-              key={chainId}
-            >
-              {params?.chainName}
-            </div>
-          )
-        })}
+        return (
+          <div
+            className={classnames(styles.sectionItem, {
+              [styles.active]: activeChainId === chainId,
+            })}
+            onClick={() => {
+              if (chainId === ChainId.MAINNET) {
+                void library?.send("wallet_switchEthereumChain", [
+                  { chainId: "0x1" },
+                  account,
+                ])
+              } else {
+                void library?.send("wallet_addEthereumChain", [params, account])
+              }
+            }}
+            key={chainId}
+          >
+            {params?.chainName}
+          </div>
+        )
+      })}
     </div>
   )
 }

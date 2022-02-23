@@ -1,17 +1,23 @@
 import { Dialog, DialogContent, Typography } from "@mui/material"
 import React, { ReactElement } from "react"
-import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core"
-import { Web3Provider } from "@ethersproject/providers"
 import { useTranslation } from "react-i18next"
+import { ChainId } from "../constants"
+import { useActiveWeb3React } from "../hooks"
+import { NETWORK_LABEL } from "../constants/networks"
+import { SUPPORTED_NETWORKS } from "./SiteSettingsMenu"
+import Button from "./Button"
 
 interface Props {
   open?: boolean
 }
 
 export default function WrongNetworkModal({ open }: Props): ReactElement {
-  const { error } = useWeb3React<Web3Provider>()
-  const isUnsupportChainIdError = error instanceof UnsupportedChainIdError
+  // const isUnsupportChainIdError = error instanceof UnsupportedChainIdError
   const { t } = useTranslation()
+  const { chainId, library, account } = useActiveWeb3React()
+  const params = SUPPORTED_NETWORKS[ChainId.HARMONY_MAINNET]
+  const isUnsupportChainIdError =
+    NETWORK_LABEL[chainId as ChainId] == undefined && account != undefined
 
   return (
     <Dialog open={open ?? isUnsupportChainIdError} maxWidth="xs">
@@ -20,6 +26,13 @@ export default function WrongNetworkModal({ open }: Props): ReactElement {
           &#129325;
         </Typography>
         <Typography>{t("wrongNetworkContent")}</Typography>
+        <Button
+          onClick={() => {
+            void library?.send("wallet_addEthereumChain", [params, account])
+          }}
+        >
+          Harmony Mainnet
+        </Button>
       </DialogContent>
     </Dialog>
   )

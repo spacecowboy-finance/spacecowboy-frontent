@@ -1,6 +1,7 @@
 import { ChainId, IS_L2_SUPPORTED } from "../constants"
 import React, { ReactElement } from "react"
-import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core"
+import { useWeb3React } from "@web3-react/core"
+// import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core"
 
 import Button from "./Button"
 import { NETWORK_LABEL } from "../constants/networks"
@@ -12,12 +13,14 @@ export default function NetworkDisplay({
 }: {
   onClick: () => void
 }): ReactElement | null {
-  const { active, chainId, error } = useWeb3React()
+  const { active, chainId } = useWeb3React()
   const networkLabel: string =
-    (chainId ? NETWORK_LABEL[chainId as ChainId] : undefined) ?? "Ethereum"
-  const isUnsupportChainIdError = error instanceof UnsupportedChainIdError
+    (chainId ? NETWORK_LABEL[chainId as ChainId] : undefined) ??
+    "Unsupported chain"
+  // const isUnsupportChainIdError = error instanceof UnsupportedChainIdError
+  const isUnsupportChainIdError = NETWORK_LABEL[chainId as ChainId] == undefined
 
-  return IS_L2_SUPPORTED ? (
+  return IS_L2_SUPPORTED && active ? (
     <Button
       data-testid="networkDisplayBtn"
       kind="ghost"

@@ -8,7 +8,7 @@ import { SUPPORTED_WALLETS } from "../constants"
 import Transactions from "./Transactions"
 import { Zero } from "@ethersproject/constants"
 import { find } from "lodash"
-import { getEtherscanLink } from "../utils/getEtherscanLink"
+import { getEtherscanLinkViper } from "../utils/getEtherscanLink"
 import { shortenAddress } from "../utils/shortenAddress"
 import { useActiveWeb3React } from "../hooks"
 import { usePoolTokenBalances } from "../state/wallet/hooks"
@@ -20,7 +20,7 @@ interface Props {
 
 export default function AccountDetail({ openOptions }: Props): ReactElement {
   const { t } = useTranslation()
-  const { account, connector } = useActiveWeb3React()
+  const { chainId, account, connector } = useActiveWeb3React()
   const tokenBalances = usePoolTokenBalances()
   const ethBalanceFormatted = commify(
     formatBNToString(tokenBalances?.ETH || Zero, 18, 6),
@@ -47,9 +47,9 @@ export default function AccountDetail({ openOptions }: Props): ReactElement {
             <span className="address">
               {account && shortenAddress(account)}
             </span>
-            {account && (
+            {account && chainId && (
               <a
-                href={getEtherscanLink(account, "address")}
+                href={getEtherscanLinkViper(chainId, account, "address")}
                 target="_blank"
                 rel="noreferrer"
               >

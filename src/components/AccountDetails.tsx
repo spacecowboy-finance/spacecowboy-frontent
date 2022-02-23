@@ -23,7 +23,7 @@ export default function AccountDetail({ openOptions }: Props): ReactElement {
   const { chainId, account, connector } = useActiveWeb3React()
   const tokenBalances = usePoolTokenBalances()
   const ethBalanceFormatted = commify(
-    formatBNToString(tokenBalances?.ETH || Zero, 18, 6),
+    formatBNToString(tokenBalances?.ETH || Zero, 18, 2),
   )
 
   const connectorName = find(SUPPORTED_WALLETS, ["connector", connector])?.name
@@ -66,7 +66,7 @@ export default function AccountDetail({ openOptions }: Props): ReactElement {
               </a>
             )}
           </div>
-          <span className="data">{ethBalanceFormatted}&#926;</span>
+          <span className="data">{ethBalanceFormatted} ONE</span>
           <div className="buttonGroup">
             {account && (
               <Copy toCopy={account}>

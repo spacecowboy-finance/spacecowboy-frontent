@@ -7,7 +7,7 @@ import React, {
   useEffect,
   useState,
 } from "react"
-import { darkTheme, lightTheme } from "../theme"
+import { darkTheme } from "../theme"
 
 import { ThemeProvider } from "@mui/material"
 import componentsOverrides from "../theme/components"
@@ -54,10 +54,11 @@ function ThemeSettingsProvider({
     localStorage.setItem("paletteMode", mode)
   }
 
-  const theme =
-    mode === "dark"
-      ? responsiveFontSizes(darkTheme)
-      : responsiveFontSizes(lightTheme)
+  // const theme =
+  //   mode === "dark"
+  //     ? responsiveFontSizes(darkTheme)
+  //     : responsiveFontSizes(lightTheme)
+  const theme = responsiveFontSizes(darkTheme)
   theme.components = componentsOverrides(theme)
 
   return (

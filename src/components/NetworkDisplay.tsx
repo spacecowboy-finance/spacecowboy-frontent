@@ -16,11 +16,11 @@ export default function NetworkDisplay({
   const { active, chainId } = useWeb3React()
   const networkLabel: string =
     (chainId ? NETWORK_LABEL[chainId as ChainId] : undefined) ??
-    "Unupported chain"
+    "Unsupported chain"
   // const isUnsupportChainIdError = error instanceof UnsupportedChainIdError
   const isUnsupportChainIdError = NETWORK_LABEL[chainId as ChainId] == undefined
 
-  return IS_L2_SUPPORTED ? (
+  return IS_L2_SUPPORTED && active ? (
     <Button
       data-testid="networkDisplayBtn"
       kind="ghost"

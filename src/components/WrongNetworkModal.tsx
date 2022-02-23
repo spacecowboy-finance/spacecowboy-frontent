@@ -16,7 +16,8 @@ export default function WrongNetworkModal({ open }: Props): ReactElement {
   const { t } = useTranslation()
   const { chainId, library, account } = useActiveWeb3React()
   const params = SUPPORTED_NETWORKS[ChainId.HARMONY_MAINNET]
-  const isUnsupportChainIdError = NETWORK_LABEL[chainId as ChainId] == undefined
+  const isUnsupportChainIdError =
+    NETWORK_LABEL[chainId as ChainId] == undefined && account != undefined
 
   return (
     <Dialog open={open ?? isUnsupportChainIdError} maxWidth="xs">

@@ -211,16 +211,18 @@ export async function getMulticallProvider(
   if (chainId === ChainId.HARDHAT) {
     ethcallProvider.multicallAddress =
       "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f"
-  } else if (chainId === ChainId.ROPSTEN) {
-    ethcallProvider.multicallAddress =
-      "0x53c43764255c17bd724f74c4ef150724ac50a3ed"
-  } else if (chainId === ChainId.ARBITRUM) {
-    ethcallProvider.multicallAddress =
-      "0xab16069d3e9e352343b2040ce7d7715c585994f9"
-  } else if (chainId === ChainId.ARBITRUM_TESTNET) {
-    ethcallProvider.multicallAddress =
-      "0x5D6e06d3E154C5DBEC91317f0d04AE03AB49A273"
-  } else if (chainId === ChainId.HARMONY_TESTNET) {
+  }
+  // else if (chainId === ChainId.ROPSTEN) {
+  //   ethcallProvider.multicallAddress =
+  //     "0x53c43764255c17bd724f74c4ef150724ac50a3ed"
+  // } else if (chainId === ChainId.ARBITRUM) {
+  //   ethcallProvider.multicallAddress =
+  //     "0xab16069d3e9e352343b2040ce7d7715c585994f9"
+  // } else if (chainId === ChainId.ARBITRUM_TESTNET) {
+  //   ethcallProvider.multicallAddress =
+  //     "0x5D6e06d3E154C5DBEC91317f0d04AE03AB49A273"
+  // }
+  else if (chainId === ChainId.HARMONY_TESTNET) {
     ethcallProvider.multicallAddress =
       "0xd078799c53396616844e2fa97f0dd2b4c145a685"
   } else if (chainId === ChainId.HARMONY_MAINNET) {

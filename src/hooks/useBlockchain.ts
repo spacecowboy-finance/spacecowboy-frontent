@@ -2,9 +2,9 @@ import { ChainId } from "../constants"
 import { useActiveWeb3React } from "./index"
 
 enum Blockchain {
-  ETHEREUM = 1,
-  BINANCE_SMART_CHAIN = 2,
-  HARMONY = 3,
+  // ETHEREUM = 1,
+  // BINANCE_SMART_CHAIN = 2,
+  HARMONY = 1,
 }
 
 export default function useBlockchain(): Blockchain {

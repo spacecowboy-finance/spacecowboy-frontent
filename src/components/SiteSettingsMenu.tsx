@@ -142,14 +142,16 @@ function NetworkSection(): ReactElement {
               [styles.active]: activeChainId === chainId,
             })}
             onClick={() => {
-              if (chainId === ChainId.MAINNET) {
-                void library?.send("wallet_switchEthereumChain", [
-                  { chainId: "0x1" },
-                  account,
-                ])
-              } else {
-                void library?.send("wallet_addEthereumChain", [params, account])
-              }
+              // if (chainId === ChainId.HARMONY_MAINNET) {
+              //   void library?.send("wallet_switchEthereumChain", [
+              //     // { chainId: "0x1" },
+              //     { chainId: "0x63564C40" },
+              //     account,
+              //   ])
+              // } else {
+              //   void library?.send("wallet_addEthereumChain", [params, account])
+              // }
+              void library?.send("wallet_addEthereumChain", [params, account])
             }}
             key={chainId}
           >

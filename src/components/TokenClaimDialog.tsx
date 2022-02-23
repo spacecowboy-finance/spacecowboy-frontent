@@ -39,9 +39,11 @@ export default function TokenClaimDialog({
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
   const isClaimableNetwork =
-    chainId === ChainId.MAINNET ||
+    // chainId === ChainId.MAINNET ||
     chainId === ChainId.HARDHAT ||
-    chainId === ChainId.ROPSTEN
+    chainId === ChainId.HARMONY_MAINNET ||
+    chainId === ChainId.HARMONY_TESTNET
+  // chainId === ChainId.ROPSTEN
 
   const rewardBalances = useContext(RewardsBalancesContext)
   const {

@@ -8,16 +8,17 @@ export function getEtherscanLink(
 }
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  1: "",
-  3: "ropsten.",
-  4: "rinkeby.",
-  5: "goerli.",
-  42: "kovan.",
+  // 1: "",
+  // 3: "ropsten.",
+  // 4: "rinkeby.",
+  // 5: "goerli.",
+  // 42: "kovan.",
   31337: "Hardhat.",
-  42161: "Arbitrum.",
-  421611: "Arbitrum Testnet",
+  // 42161: "Arbitrum.",
+  // 421611: "Arbitrum Testnet",
   1666600000: "explorer.harmony.one/#",
   1666700000: "explorer.testnet.harmony.one/#",
+  99999999999: "Mainnet",
 }
 
 export function getEtherscanLinkViper(
@@ -25,10 +26,12 @@ export function getEtherscanLinkViper(
   data: string,
   type: "transaction" | "token" | "address" | "block",
 ): string {
-  let prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}`
-  prefix = [56, 97, 1666600000, 1666700000].includes(chainId)
-    ? prefix
-    : `${prefix}etherscan.io`
+  const prefix = `https://${
+    ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1666600000]
+  }`
+  // prefix = [56, 97, 1666600000, 1666700000].includes(chainId)
+  //   ? prefix
+  //   : `${prefix}etherscan.io`
 
   switch (type) {
     case "transaction": {
